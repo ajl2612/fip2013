@@ -58,6 +58,11 @@ extern "C" {
 #include "opencv2/objdetect/objdetect.hpp"
 #include "/home/pi/libfacerec-v0.04/include/facerec.hpp"	//<-- to modify
 
+// For netoworking
+#include "ClientSocket.h"
+#include "SocketException.h"
+
+
 using namespace cv;
 using namespace std;
 
@@ -72,6 +77,10 @@ using namespace std;
 #define TRACE 1
 #define DEBUG_MODE 0
 #define DEBUG if (DEBUG_MODE==1)
+
+//for networking
+#define SERVER_IP "129.21.58.247"
+#define SERVER_PORT 8090
 
 CascadeClassifier face_cascade; 
 CvPoint Myeye_left;
@@ -126,6 +135,8 @@ IplImage *py, *pu, *pv, *pu_big, *pv_big, *image,* dstImage;
 		
 		
 int mmal_status_to_int(MMAL_STATUS_T status);
+
+int frm_counter = 0;
 
 /** Structure containing all state information for the current run
  */
@@ -303,6 +314,15 @@ static void video_buffer_callback(MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buffe
 	// detect faces
 	face_cascade.detectMultiScale(gray, faces, 1.1, 3, CV_HAAR_SCALE_IMAGE, Size(80,80));
 	// for each faces founded
+	if( faces.size() > 0){
+		cout << "No faces detected\n"
+		try{
+			frm_counter ++;
+			ClientSocket client_socket ( "129.21.58.247", 8090 );
+			client_socket << frm_counter;
+		}
+		catch ( SocketException& ) {}
+	}
 	for(int i = 0; i < faces.size(); i++) 
 	{       
 		// crop face (pretty easy with opencv, don't you think ? 
@@ -719,13 +739,27 @@ int main(int argc, const char **argv)
 
 	// change fn_harr to be quicker LBP (see article)
 	fn_haar = "/home/pi/cascades/lbpcascade_frontalface.xml";
-    if (!face_cascade.load(fn_haar))
-   	{
-    			cout <<"(E) face cascade model not loaded :"+fn_haar+"\n"; 
-    			return -1;
-    }
-    trace("(init) Load modele : ok");
-    
+    	if (!face_cascade.load(fn_haar))
+ 	{
+		cout <<"(E) face cascade model not loaded :"+fn_haar+"\n"; 
+		return -1;
+	}
+	trace("(init) Load modele : ok");
+
+	printf("Creating network\n");
+	
+	try{
+		ClientSocket client_socket ( SERVER_IP, SERVER_PORT );
+	}
+	catch( SocketException& e ){
+		cout << "Exception was caught:" << e.description() << "\n";
+		//Something bad has happened. Exit the program. 
+		return -1;
+	}
+	cout << "Network created successfully" << endl;
+
+
+ 
 /////////////////////////////////
 // END OF FACE RECO INIT
 /////////////////////////////////
@@ -741,6 +775,8 @@ int main(int argc, const char **argv)
 	MMAL_PORT_T *encoder_input_port = NULL;
 	MMAL_PORT_T *encoder_output_port = NULL;
 	
+	string message;
+
 	time_t timer_begin,timer_end;
 	double secondsElapsed;
 	
