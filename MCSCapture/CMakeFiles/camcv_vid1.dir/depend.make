@@ -914,9 +914,12 @@ CMakeFiles/camcv_vid1.dir/gl_scenes/yuv.c.o: RaspiTexUtil.h
 CMakeFiles/camcv_vid1.dir/tga.c.o: tga.c
 CMakeFiles/camcv_vid1.dir/tga.c.o: tga.h
 
+CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o: ClientSocket.h
 CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o: RaspiCLI.h
 CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o: RaspiCamControl.h
 CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o: RaspiPreview.h
+CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o: Socket.h
+CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o: SocketException.h
 CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o: camcv_vid1.cpp
 CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o: /home/pi/libfacerec-v0.04/include/colormap.hpp
 CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o: /home/pi/libfacerec-v0.04/include/facerec.hpp

@@ -915,9 +915,12 @@ CMakeFiles/camcv_vid1.dir/tga.c.o
  /home/pi/FIP-MCS/fip2013/MCSCapture/tga.c
  /home/pi/FIP-MCS/fip2013/MCSCapture/tga.h
 CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o
+ /home/pi/FIP-MCS/fip2013/MCSCapture/ClientSocket.h
  /home/pi/FIP-MCS/fip2013/MCSCapture/RaspiCLI.h
  /home/pi/FIP-MCS/fip2013/MCSCapture/RaspiCamControl.h
  /home/pi/FIP-MCS/fip2013/MCSCapture/RaspiPreview.h
+ /home/pi/FIP-MCS/fip2013/MCSCapture/Socket.h
+ /home/pi/FIP-MCS/fip2013/MCSCapture/SocketException.h
  /home/pi/FIP-MCS/fip2013/MCSCapture/camcv_vid1.cpp
  /home/pi/libfacerec-v0.04/include/colormap.hpp
  /home/pi/libfacerec-v0.04/include/facerec.hpp
