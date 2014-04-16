@@ -2,20 +2,28 @@
 #include "SocketException.h"
 #include <iostream>
 #include <string>
+#include <sstream>
+
+
 
 int main ( int argc, int argv[] )
 {
+for(int i = 0; i<10; i++){
+
   try
     {
+	ClientSocket client_socket ( "129.21.58.247", 8090 );
+	std::string reply;
 
-      ClientSocket client_socket ( "129.21.58.247", 8090 );
-
-      std::string reply;
+	std::ostringstream stringStream;
+	stringStream <<  "hello... " << i ;
+	reply = stringStream.str();
+	
 
       try
 	{
-	  client_socket << "Motha Flippin Banana Pancakes.";
-	  //client_socket >> reply;
+	client_socket << reply;
+	 //client_socket >> reply;
 	}
       catch ( SocketException& ) {}
 
@@ -26,6 +34,6 @@ int main ( int argc, int argv[] )
     {
       std::cout << "Exception was caught:" << e.description() << "\n";
     }
-
+}
   return 0;
 }
