@@ -12,4 +12,3 @@ while True:
     buf = connection.recv(64).decode()
     if len(buf) > 0:
         print(buf)
-        break
