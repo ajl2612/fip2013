@@ -14,6 +14,8 @@
 // 
 /////////////////////////////////////////////////////////////
 
+// For netoworking
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -40,6 +42,9 @@ extern "C" {
 	#include "RaspiCamControl.h"
 	#include "RaspiPreview.h"
 	#include "RaspiCLI.h"
+
+	#include "ClientSocket.h"
+	#include "SocketException.h"
 }
 
 #include <semaphore.h>
@@ -57,10 +62,6 @@ extern "C" {
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/objdetect/objdetect.hpp"
 #include "/home/pi/libfacerec-v0.04/include/facerec.hpp"	//<-- to modify
-
-// For netoworking
-#include "ClientSocket.h"
-#include "SocketException.h"
 
 
 using namespace cv;
@@ -373,8 +374,36 @@ static void video_buffer_callback(MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buffe
 		}	 
 	*/
 	} // end for
-	
-		
+
+	frm_counter++;
+	try
+    {
+        ClientSocket client_socket ( "129.21.58.247", 8090 );
+        std::string reply;
+
+        std::ostringstream stringStream;
+        stringStream <<  "hello... " << frm_counter ;
+        reply = stringStream.str();
+
+
+      try
+        {
+        client_socket << reply;
+         //client_socket >> reply;
+        }
+      catch ( SocketException& ) {}
+
+      std::cout << "We received this response from the server:\n\"" << reply << "\"\n";;
+
+    }
+  catch ( SocketException& e )
+    {
+      std::cout << "Exception was caught:" << e.description() << "\n";
+    }
+
+
+
+
 /////////////////////////
 // END OF FACE RECO
 /////////////////////////

@@ -12,6 +12,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/camcv_vid1.dir/gl_scenes/yuv.c.o"
   "CMakeFiles/camcv_vid1.dir/gl_scenes/sobel.c.o"
   "CMakeFiles/camcv_vid1.dir/tga.c.o"
+  "CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o"
   "camcv_vid1.pdb"
   "camcv_vid1"
 )

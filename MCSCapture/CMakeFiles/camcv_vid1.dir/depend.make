@@ -914,6 +914,11 @@ CMakeFiles/camcv_vid1.dir/gl_scenes/yuv.c.o: RaspiTexUtil.h
 CMakeFiles/camcv_vid1.dir/tga.c.o: tga.c
 CMakeFiles/camcv_vid1.dir/tga.c.o: tga.h
 
+CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o: ClientSocket.cpp
+CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o: ClientSocket.h
+CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o: Socket.h
+CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o: SocketException.h
+
 CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o: ClientSocket.h
 CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o: RaspiCLI.h
 CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o: RaspiCamControl.h

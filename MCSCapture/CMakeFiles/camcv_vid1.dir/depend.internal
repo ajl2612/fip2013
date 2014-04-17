@@ -914,6 +914,11 @@ CMakeFiles/camcv_vid1.dir/gl_scenes/yuv.c.o
 CMakeFiles/camcv_vid1.dir/tga.c.o
  /home/pi/FIP-MCS/fip2013/MCSCapture/tga.c
  /home/pi/FIP-MCS/fip2013/MCSCapture/tga.h
+CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o
+ /home/pi/FIP-MCS/fip2013/MCSCapture/ClientSocket.cpp
+ /home/pi/FIP-MCS/fip2013/MCSCapture/ClientSocket.h
+ /home/pi/FIP-MCS/fip2013/MCSCapture/Socket.h
+ /home/pi/FIP-MCS/fip2013/MCSCapture/SocketException.h
 CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o
  /home/pi/FIP-MCS/fip2013/MCSCapture/ClientSocket.h
  /home/pi/FIP-MCS/fip2013/MCSCapture/RaspiCLI.h

@@ -111,6 +111,30 @@ camcv_vid1/fast:
 	$(MAKE) -f CMakeFiles/camcv_vid1.dir/build.make CMakeFiles/camcv_vid1.dir/build
 .PHONY : camcv_vid1/fast
 
+ClientSocket.o: ClientSocket.cpp.o
+.PHONY : ClientSocket.o
+
+# target to build an object file
+ClientSocket.cpp.o:
+	$(MAKE) -f CMakeFiles/camcv_vid1.dir/build.make CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o
+.PHONY : ClientSocket.cpp.o
+
+ClientSocket.i: ClientSocket.cpp.i
+.PHONY : ClientSocket.i
+
+# target to preprocess a source file
+ClientSocket.cpp.i:
+	$(MAKE) -f CMakeFiles/camcv_vid1.dir/build.make CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.i
+.PHONY : ClientSocket.cpp.i
+
+ClientSocket.s: ClientSocket.cpp.s
+.PHONY : ClientSocket.s
+
+# target to generate assembly for a file
+ClientSocket.cpp.s:
+	$(MAKE) -f CMakeFiles/camcv_vid1.dir/build.make CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.s
+.PHONY : ClientSocket.cpp.s
+
 RaspiCLI.o: RaspiCLI.c.o
 .PHONY : RaspiCLI.o
 
@@ -432,6 +456,9 @@ help:
 	@echo "... camcv_vid1"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... ClientSocket.o"
+	@echo "... ClientSocket.i"
+	@echo "... ClientSocket.s"
 	@echo "... RaspiCLI.o"
 	@echo "... RaspiCLI.i"
 	@echo "... RaspiCLI.s"

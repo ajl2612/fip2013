@@ -20,6 +20,7 @@ SET(CMAKE_DEPENDS_CHECK_C
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 SET(CMAKE_DEPENDS_CHECK_CXX
+  "/home/pi/FIP-MCS/fip2013/MCSCapture/ClientSocket.cpp" "/home/pi/FIP-MCS/fip2013/MCSCapture/CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o"
   "/home/pi/FIP-MCS/fip2013/MCSCapture/camcv_vid1.cpp" "/home/pi/FIP-MCS/fip2013/MCSCapture/CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
@@ -42,6 +43,7 @@ SET(CMAKE_C_TARGET_INCLUDE_PATH
   "/opt/vc/include/interface/vcos"
   "/opt/vc/include/interface/vcos/pthreads"
   "/opt/vc/include/interface/vmcs_host/linux"
+  "/home/pi/FIP-MCS/fip2013/networkTestCode"
   "."
   )
 SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
