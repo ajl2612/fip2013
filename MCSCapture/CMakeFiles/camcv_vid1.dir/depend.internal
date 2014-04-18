@@ -919,6 +919,9 @@ CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o
  /home/pi/FIP-MCS/fip2013/MCSCapture/ClientSocket.h
  /home/pi/FIP-MCS/fip2013/MCSCapture/Socket.h
  /home/pi/FIP-MCS/fip2013/MCSCapture/SocketException.h
+CMakeFiles/camcv_vid1.dir/Socket.cpp.o
+ /home/pi/FIP-MCS/fip2013/MCSCapture/Socket.cpp
+ /home/pi/FIP-MCS/fip2013/MCSCapture/Socket.h
 CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o
  /home/pi/FIP-MCS/fip2013/MCSCapture/ClientSocket.h
  /home/pi/FIP-MCS/fip2013/MCSCapture/RaspiCLI.h

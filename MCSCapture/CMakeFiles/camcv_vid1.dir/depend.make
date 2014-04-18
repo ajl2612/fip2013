@@ -919,6 +919,9 @@ CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o: ClientSocket.h
 CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o: Socket.h
 CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o: SocketException.h
 
+CMakeFiles/camcv_vid1.dir/Socket.cpp.o: Socket.cpp
+CMakeFiles/camcv_vid1.dir/Socket.cpp.o: Socket.h
+
 CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o: ClientSocket.h
 CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o: RaspiCLI.h
 CMakeFiles/camcv_vid1.dir/camcv_vid1.cpp.o: RaspiCamControl.h

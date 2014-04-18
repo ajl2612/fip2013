@@ -6,3 +6,33 @@
 
 #IncludeRegexTransform: 
 
+/home/pi/FIP-MCS/fip2013/MCSCapture/Socket.cpp
+Socket.h
+/home/pi/FIP-MCS/fip2013/MCSCapture/Socket.h
+string.h
+/home/pi/FIP-MCS/fip2013/MCSCapture/string.h
+string.h
+-
+errno.h
+-
+fcntl.h
+-
+iostream
+-
+
+/home/pi/FIP-MCS/fip2013/MCSCapture/Socket.h
+sys/types.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+netdb.h
+-
+unistd.h
+-
+string
+-
+arpa/inet.h
+-
+

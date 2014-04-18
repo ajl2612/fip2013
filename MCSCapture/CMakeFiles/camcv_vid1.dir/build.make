@@ -371,6 +371,29 @@ CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o.provides: CMakeFiles/camcv_vid1.dir
 
 CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o.provides.build: CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o
 
+CMakeFiles/camcv_vid1.dir/Socket.cpp.o: CMakeFiles/camcv_vid1.dir/flags.make
+CMakeFiles/camcv_vid1.dir/Socket.cpp.o: Socket.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/FIP-MCS/fip2013/MCSCapture/CMakeFiles $(CMAKE_PROGRESS_15)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/camcv_vid1.dir/Socket.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/camcv_vid1.dir/Socket.cpp.o -c /home/pi/FIP-MCS/fip2013/MCSCapture/Socket.cpp
+
+CMakeFiles/camcv_vid1.dir/Socket.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/camcv_vid1.dir/Socket.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pi/FIP-MCS/fip2013/MCSCapture/Socket.cpp > CMakeFiles/camcv_vid1.dir/Socket.cpp.i
+
+CMakeFiles/camcv_vid1.dir/Socket.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/camcv_vid1.dir/Socket.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pi/FIP-MCS/fip2013/MCSCapture/Socket.cpp -o CMakeFiles/camcv_vid1.dir/Socket.cpp.s
+
+CMakeFiles/camcv_vid1.dir/Socket.cpp.o.requires:
+.PHONY : CMakeFiles/camcv_vid1.dir/Socket.cpp.o.requires
+
+CMakeFiles/camcv_vid1.dir/Socket.cpp.o.provides: CMakeFiles/camcv_vid1.dir/Socket.cpp.o.requires
+	$(MAKE) -f CMakeFiles/camcv_vid1.dir/build.make CMakeFiles/camcv_vid1.dir/Socket.cpp.o.provides.build
+.PHONY : CMakeFiles/camcv_vid1.dir/Socket.cpp.o.provides
+
+CMakeFiles/camcv_vid1.dir/Socket.cpp.o.provides.build: CMakeFiles/camcv_vid1.dir/Socket.cpp.o
+
 # Object files for target camcv_vid1
 camcv_vid1_OBJECTS = \
 "CMakeFiles/camcv_vid1.dir/RaspiCamControl.c.o" \
@@ -386,7 +409,8 @@ camcv_vid1_OBJECTS = \
 "CMakeFiles/camcv_vid1.dir/gl_scenes/yuv.c.o" \
 "CMakeFiles/camcv_vid1.dir/gl_scenes/sobel.c.o" \
 "CMakeFiles/camcv_vid1.dir/tga.c.o" \
-"CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o"
+"CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o" \
+"CMakeFiles/camcv_vid1.dir/Socket.cpp.o"
 
 # External object files for target camcv_vid1
 camcv_vid1_EXTERNAL_OBJECTS =
@@ -405,6 +429,7 @@ camcv_vid1: CMakeFiles/camcv_vid1.dir/gl_scenes/yuv.c.o
 camcv_vid1: CMakeFiles/camcv_vid1.dir/gl_scenes/sobel.c.o
 camcv_vid1: CMakeFiles/camcv_vid1.dir/tga.c.o
 camcv_vid1: CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o
+camcv_vid1: CMakeFiles/camcv_vid1.dir/Socket.cpp.o
 camcv_vid1: CMakeFiles/camcv_vid1.dir/build.make
 camcv_vid1: /home/pi/libfacerec-v0.04/libopencv_facerec.a
 camcv_vid1: /opt/vc/lib/libmmal_core.so
@@ -436,6 +461,7 @@ CMakeFiles/camcv_vid1.dir/requires: CMakeFiles/camcv_vid1.dir/gl_scenes/yuv.c.o.
 CMakeFiles/camcv_vid1.dir/requires: CMakeFiles/camcv_vid1.dir/gl_scenes/sobel.c.o.requires
 CMakeFiles/camcv_vid1.dir/requires: CMakeFiles/camcv_vid1.dir/tga.c.o.requires
 CMakeFiles/camcv_vid1.dir/requires: CMakeFiles/camcv_vid1.dir/ClientSocket.cpp.o.requires
+CMakeFiles/camcv_vid1.dir/requires: CMakeFiles/camcv_vid1.dir/Socket.cpp.o.requires
 .PHONY : CMakeFiles/camcv_vid1.dir/requires
 
 CMakeFiles/camcv_vid1.dir/clean:

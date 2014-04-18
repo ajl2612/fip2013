@@ -255,6 +255,30 @@ RaspiTexUtil.c.s:
 	$(MAKE) -f CMakeFiles/camcv_vid1.dir/build.make CMakeFiles/camcv_vid1.dir/RaspiTexUtil.c.s
 .PHONY : RaspiTexUtil.c.s
 
+Socket.o: Socket.cpp.o
+.PHONY : Socket.o
+
+# target to build an object file
+Socket.cpp.o:
+	$(MAKE) -f CMakeFiles/camcv_vid1.dir/build.make CMakeFiles/camcv_vid1.dir/Socket.cpp.o
+.PHONY : Socket.cpp.o
+
+Socket.i: Socket.cpp.i
+.PHONY : Socket.i
+
+# target to preprocess a source file
+Socket.cpp.i:
+	$(MAKE) -f CMakeFiles/camcv_vid1.dir/build.make CMakeFiles/camcv_vid1.dir/Socket.cpp.i
+.PHONY : Socket.cpp.i
+
+Socket.s: Socket.cpp.s
+.PHONY : Socket.s
+
+# target to generate assembly for a file
+Socket.cpp.s:
+	$(MAKE) -f CMakeFiles/camcv_vid1.dir/build.make CMakeFiles/camcv_vid1.dir/Socket.cpp.s
+.PHONY : Socket.cpp.s
+
 camcv_vid1.o: camcv_vid1.cpp.o
 .PHONY : camcv_vid1.o
 
@@ -474,6 +498,9 @@ help:
 	@echo "... RaspiTexUtil.o"
 	@echo "... RaspiTexUtil.i"
 	@echo "... RaspiTexUtil.s"
+	@echo "... Socket.o"
+	@echo "... Socket.i"
+	@echo "... Socket.s"
 	@echo "... camcv_vid1.o"
 	@echo "... camcv_vid1.i"
 	@echo "... camcv_vid1.s"
