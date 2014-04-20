@@ -8,7 +8,10 @@ serversocket.listen(5) # become a server socket, maximum 5 connections
 
 print("Awaiting packages")
 while True:
-    connection, address = serversocket.accept()
-    buf = connection.recv(64).decode()
-    if len(buf) > 0:
-        print(buf)
+	print("Waiting")
+	connection, address = serversocket.accept()
+	buf = connection.recv(64).decode()
+	print("recieved")
+	if len(buf) > 0:
+		print(buf)
+	
