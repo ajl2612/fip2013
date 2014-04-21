@@ -23,11 +23,25 @@ class Camera(object):
     def setPoint2(self, x, y):
         self.point2 = (x,y)
 
+    def updateData( self, x1, y1, width, height ):
+        """
+        Updates the information about a detected face stored in this camera
+        """
+        self.point1 = ( int(x1), int(y1) )
+        self.point2 = ( int(x1+width), int(y1+height) )
+		
+
     def getWidth(self):
         """
         Returns the width of the camera face box thing
         """
         return self.point2[0] - self.point1[0]
+
+    def getHeight(self):
+        """
+        Returns the height of the camera box
+        """
+        return self.point2[1] - self.point1[1]
 
     def getArea(self):
         
@@ -50,4 +64,4 @@ if __name__ == "__main__":
 
     cam.setPoint1(3,8)
 
-    print cam
+    #print cam
