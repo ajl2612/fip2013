@@ -48,7 +48,7 @@ class Camera(object):
         return self.getWidth() * (self.point2[1]-self.point1[1])
 
     def __str__(self):
-        return "Point 1 = "+str(self.point1)+", Point 2 = "+str(self.point2)
+        return self.name + " Point 1 = "+str(self.point1)+", Point 2 = "+str(self.point2)
     def __repr__(self):
         if self.name is not None:
             return self.name
