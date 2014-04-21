@@ -81,7 +81,7 @@ using namespace std;
 
 //for networking
 #define SERVER_IP "129.21.58.247"
-#define SERVER_PORT 8090
+#define SERVER_PORT 8091
 
 CascadeClassifier face_cascade; 
 CvPoint Myeye_left;
@@ -326,6 +326,14 @@ static void video_buffer_callback(MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buffe
 		catch ( SocketException& ) {}
 	}
 */
+	int bestFace = 0;
+	bool detected = false;
+	
+	//checks to see if any faces found in current franme
+	if( faces.size() > 0){
+		detected = true;
+	}
+
 	for(int i = 0; i < faces.size(); i++) 
 	{       
 		// crop face (pretty easy with opencv, don't you think ? 
@@ -376,30 +384,35 @@ static void video_buffer_callback(MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buffe
 	} // end for
 
 	frm_counter++;
-	try
-    {
-        ClientSocket client_socket ( "129.21.58.247", 8090 );
-        std::string reply;
-
-        std::ostringstream stringStream;
-        stringStream <<  "hello... " << frm_counter ;
-        reply = stringStream.str();
+	Rect bfr;
+	string reply;
 
 
-      try
-        {
-        client_socket << reply;
-         //client_socket >> reply;
-        }
-      catch ( SocketException& ) {}
+	// If a face is present. Populate a command string with its coordinate info. 
+	// Otherwise, send the "Empty Frame" string. 
+	if( detected ){
+		bfr = faces[bestFace];
 
-      std::cout << "We received this response from the server:\n\"" << reply << "\"\n";;
+		std::ostringstream stringStream;
+		stringStream << bfr.x << ":" << bfr.y << ":" << bfr.width << ":" 
+			<< bfr.height;
+		reply = stringStream.str();
+	}
+	else{
+		reply = "0:0:0:0";
+	}
 
-    }
-  catch ( SocketException& e )
-    {
-      std::cout << "Exception was caught:" << e.description() << "\n";
-    }
+	try{
+        	ClientSocket client_socket ( SERVER_IP, SERVER_PORT  );
+	      	try{
+        		client_socket << reply;
+        	}
+      		catch ( SocketException& ) {}
+
+    	}
+	catch( SocketException& e ){
+      		std::cout << "Exception was caught:" << e.description() << "\n";
+    	}
 
 
 

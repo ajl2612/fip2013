@@ -12,11 +12,11 @@ for(int i = 0; i<10; i++){
 
   try
     {
-	ClientSocket client_socket ( "129.21.58.247", 8090 );
+	ClientSocket client_socket ( "129.21.58.247", 8091 );
 	std::string reply;
 
 	std::ostringstream stringStream;
-	stringStream <<  "hello... " << i ;
+	stringStream <<  "0:0:0:" << i ;
 	reply = stringStream.str();
 	
 
