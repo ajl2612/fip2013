@@ -1,10 +1,8 @@
-"""
-Camera object
-"""
-
 class Camera(object):
-
-    def __init__(self, x1 = 0, y1 = 0, x2 = 0, y2 = 0, detected = True, name=None):
+    """
+    Represents camera state.
+    """
+    def __init__(self, x1 = 0, y1 = 0, x2 = 0, y2 = 0, detected = True, name=""):
         self.point1 = (x1,y1)
         self.point2 = (x2,y2)
         self.detected = detected
@@ -48,7 +46,8 @@ class Camera(object):
         return self.getWidth() * (self.point2[1]-self.point1[1])
 
     def __str__(self):
-        return self.name + " Point 1 = "+str(self.point1)+", Point 2 = "+str(self.point2)
+        return self.name + " Point 1 = " +str(self.point1) + ", Point 2 = "+ str(self.point2)
+    
     def __repr__(self):
         if self.name is not None:
             return self.name
@@ -58,10 +57,9 @@ class Camera(object):
 if __name__ == "__main__":
 
     cam = Camera(0, 5, 6, 10)
-    print(cam)
-    
-    print(cam.getArea())
+    print cam
+    print cam.getArea()
 
     cam.setPoint1(3,8)
 
-    #print cam
+    print cam
