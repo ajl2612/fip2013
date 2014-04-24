@@ -1,2 +1,6 @@
 */CMakeLists
 *.o
+
+__pycache__
+*.pyc
+*.swp
