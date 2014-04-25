@@ -2,5 +2,7 @@
 *.o
 
 __pycache__
+env
 *.pyc
 *.swp
+*.egg-info
