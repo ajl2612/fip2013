@@ -1,16 +1,28 @@
 """
 This code is the control code for the system.  It calls methods in the cinematography class object
-For the 2014 Freshman IMaging Project at CIS, RIT
+For the 2014 Freshman Imaging Project at CIS, RIT
 
 Authors: Noah Kram, Anna Dining
 """
 
 import atem_control as bm
+from Camera import Camera
 #import Cinematography
 import time
+import config
+from motor import Motor
+
+cam_list = []
+motor_list = []
+
+for i in range( 0, 3 ):
+    cam_list.append( Camera() )
+    motor_ip = config.motors[i]['ip']
+    motor_port = config.motors[i]['port']
+    motor_list.append( Motor( motor_ip, motor_port ) )
+
 
 cinema = None
-
 
 def change_camera(cam):
 	bm.change_program_input(cam)
