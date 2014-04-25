@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="IntelliPrecense",
+    name="IntelliPresence",
     version="1.0.0",
     description="2014 Freshman Imaging Project RIT",
     project_url="https://github.com/ajl2612/fip2013",
