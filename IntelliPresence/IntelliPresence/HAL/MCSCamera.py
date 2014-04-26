@@ -8,11 +8,13 @@ class MCSCamera():
 	for poor camera quality and some inconsistency in the facial detection algorithym.  
 	"""
 
-	def __init__(self, x1 = 0, y1 = 0, x2 = 0, y2 = 0,name = "", detected = False):
+	def __init__(self, x1, y1, x2, y2, name, ip_addr, port detected = False):
 		"""
 		Default constructor for MCSCamera. The only requirement is a name. All values 
 		are zeroed out by default. 
 		"""
+                self.ip_addr = ip_addr
+                self.port = port
 		self.point1 = (x1,y1)
 		self.point2 = (x2,y2)
 		self.detected = False
@@ -96,7 +98,7 @@ def test():
 	cam = MCSCamera( 0,0,0,0,"Red2",False)
 	print(cam.getName())
 	print
-	cam.updateData(5,5, 10, 20, True )
+	cam.updateData(5,5, 10, 20,"", 0 True )
 	print( cam.getPoint1())
 	print(cam.getPoint2())
 	print(cam.isFace())
