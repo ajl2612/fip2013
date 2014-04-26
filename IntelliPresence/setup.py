@@ -11,7 +11,8 @@ setup(
     entry_points={
         "console_scripts": [
             "tantive_iv=IntelliPresence:main",
-            "fipmain=IntelliPresence:main",
+            "fip_run=IntelliPresence:main",
+            "fip_test=tests:main",
         ],
     },
 )
