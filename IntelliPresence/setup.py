@@ -10,8 +10,8 @@ setup(
     install_requires=['nose'],
     entry_points={
         "console_scripts": [
-            "tantive_iv=IntelliPresence:main",
-            "fip_run=IntelliPresence:main",
+            "tantive_iv=intellipresence:main",
+            "fip_run=intellipresence:main",
             "fip_test=tests:main",
         ],
     },
