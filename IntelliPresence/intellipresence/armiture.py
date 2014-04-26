@@ -1,4 +1,5 @@
-from HAL import MCSCamera, Motor
+from hal.mcs_camera import Camera
+from hal.motor import Motor
 
 class Armiture():
     """
