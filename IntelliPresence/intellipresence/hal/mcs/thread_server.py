@@ -1,5 +1,5 @@
 import socket
-from Camera import Camera
+from hal.mcs.camera import Camera
 import threading
 
 class NetworkThread(threading.Thread):
@@ -42,12 +42,9 @@ class NetworkThread(threading.Thread):
 				self.cam.updateData(x1, y1, width, height)
 			print( self.cam )
 
-
-
-
 def main():
-	cam1 = Camera(0,0,0,0,False, "RED2")
-	cam2 = Camera(0,0,0,0,False, "RED6")
+	cam1 = Camera(0, 0, 0, 0, "RED2", "", "8091" )
+	cam2 = Camera(0, 0, 0, 0, "RED6", "", "8091" )
 	camList = []
 	thread1 = NetworkThread("", 8091, cam1)
 	thread2 = NetworkThread("", 8092, cam2)
@@ -58,4 +55,5 @@ def main():
 	# At this point, both threads have completed
 	print("Done")
 
-main()
+if __name__ == "__main__":
+	main()
