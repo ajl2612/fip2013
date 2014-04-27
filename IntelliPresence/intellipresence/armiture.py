@@ -1,4 +1,5 @@
-from hal.mcs_camera import Camera
+from hal.mcs.camera import Camera
+from hal.mcs.thread_server import NetworkThread
 from hal.motor import Motor
 
 class Armiture():
