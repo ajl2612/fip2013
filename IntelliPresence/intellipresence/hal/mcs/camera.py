@@ -1,4 +1,4 @@
-class MCSCamera():
+class Camera():
     """
     This class acts as the Hardware Abstraction layer between MCS Cameras and the centeral
     logic systems. This class is responsible for creating container variables for holding 
