@@ -54,11 +54,11 @@ def main():
 	cam2 = Camera(0,0,0,0,False, "RED6")
 	camList = []
 	thread1 = NetworkThread("", 8091, cam1)
-	thread2 = NetworkThread("", 8092, cam2)
+	#thread2 = NetworkThread("", 8092, cam2)
 	thread1.start() # This actually causes the thread to run
-	thread2.start()	
+	#thread2.start()	
 	thread1.join()
-	thread2.join()  # This waits until the thread has completed
+	#thread2.join()  # This waits until the thread has completed
 	# At this point, both threads have completed
 	print("Done")
 
