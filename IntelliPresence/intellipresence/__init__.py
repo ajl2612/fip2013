@@ -31,6 +31,7 @@ def main():
 
     # Configure the ATEM subsystem.
     atem = configure_atem()
+    atem.connect()
 
     # Configure the controller.
     controller = Controller( armatures, atem )
@@ -83,7 +84,7 @@ def configure_atem():
     port = config.atem['port']
     
     socket_ip = util.get_interface_ip_addr( adapter )
-    return Atem( socket_ip, port, atem_ip )
+    return Atem( socket_ip, atem_ip, port )
 
 def configure_armatures():
     """
