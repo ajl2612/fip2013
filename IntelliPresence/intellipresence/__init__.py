@@ -82,9 +82,10 @@ def configure_atem():
     adapter = config.atem['adapter']
     atem_ip = config.atem['atem_addr']
     port = config.atem['port']
+    timeout = config.atem['atem_timeout']
     
     socket_ip = util.get_interface_ip_addr( adapter )
-    return Atem( socket_ip, atem_ip, port )
+    return Atem( socket_ip, atem_ip, port, timeout )
 
 def configure_armatures():
     """
@@ -129,5 +130,4 @@ def handle_siginfo( signum, stack ):
     """
     logger = logging.getLogger( __name__ )
     logger.info( "SIGINFO received." )
-
     pass

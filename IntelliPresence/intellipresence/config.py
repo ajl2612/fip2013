@@ -6,6 +6,7 @@ atem = {
     "adapter": "en0",
     "port": 9910,
     "atem_addr": "192.168.10.240",
+    "atem_timeout": 30,
 }
 
 # Configuration for the motors. TODO: Add this.
