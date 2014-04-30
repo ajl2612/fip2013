@@ -1,3 +1,5 @@
+import time
+
 class Controller():
     """
     The controller is responsible for orchestrating the activities of the
@@ -7,7 +9,7 @@ class Controller():
     def __init__( self, armitureList, atem ):
         #list of Armiture objects
         self.armitures = armitureList
-	self.atem = atem
+        self.atem = atem
 
     def camera_ranks(self):
         """
@@ -26,6 +28,9 @@ class Controller():
 
         camList.sort(reverse = True)
         return camList
+
+    def camera_ranks2(self):
+        pass
 
     def best_angle(self, cam, mcs=False):
         """
@@ -52,7 +57,7 @@ class Controller():
             pass
         return bestAngle
 
-    def start():
+    def start( self ):
         """
         Connect to the ATEM and run MCS.
         """
@@ -74,9 +79,9 @@ class Controller():
             arm4Val = arm4.getMCSFaceArea() 
 
             print( "Armiture 1: {0} {1}, Armiture 2: {2} {3}, Armiture 3 {4} {5}, Armiture 4 {6} {7}".format(arm1Det, arm1Val, arm2Det, arm2Val, arm3Det, arm3Val, arm4Det, arm4Val ) )
-            camRanks = controller.camera_ranks()
+            camRanks = self.camera_ranks()
             #print( camRanks )
             best_arm = camRanks[0][1] 
             print( "ARM {0} BEST".format( best_arm ) )
-            self.amet.set_program_channel( best_arm )
+            self.atem.set_program_channel( best_arm )
             time.sleep(2)
