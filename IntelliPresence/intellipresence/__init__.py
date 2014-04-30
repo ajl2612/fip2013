@@ -17,6 +17,7 @@ def main():
     # Configure the logger. This is done first because everything else uses
     # the logger.
     configure_logger()
+    logger = logging.getLogger( __name__ )
     
     # Validate some of the options that were added to the configuration.
     validate_configuration()
@@ -32,6 +33,11 @@ def main():
     # Configure the ATEM subsystem.
     atem = configure_atem()
     atem.connect()
+
+    for i in range( 1, 5 ):
+        logger.debug( "Switching to camera " + str( i ) )
+        atem.set_program_channel( i )
+        time.sleep( 1 )
 
     # Configure the controller.
     controller = Controller( armatures, atem )
@@ -61,7 +67,7 @@ def configure_logger():
     really easily.
     """
     root = logging.getLogger()
-    root.setLevel( logging.DEBUG )
+    root.setLevel( logging.INFO )
     formatter = logging.Formatter("[%(asctime)s][%(name)s][%(levelname)s]: %(message)s")
 
     # Create and configure the standard out logging handler.
@@ -79,11 +85,13 @@ def configure_atem():
     that was kinda-sorta reverse engineered. The ATEM facade class uses a thread
     and a socket to perform I/O operations with the ATEM hardware.
     """
+    logger = logging.getLogger( __name__ )
+
     adapter = config.atem['adapter']
     atem_ip = config.atem['atem_addr']
     port = config.atem['port']
     timeout = config.atem['atem_timeout']
-    
+
     socket_ip = util.get_interface_ip_addr( adapter )
     return Atem( socket_ip, atem_ip, port, timeout )
 
