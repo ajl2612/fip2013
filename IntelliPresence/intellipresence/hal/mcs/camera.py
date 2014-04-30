@@ -81,7 +81,7 @@ class Camera():
         """
         return self.name
 
-    def isFace(self):
+    def isFaceDetected(self):
         """
         Returns true if this camera has detected a face and fals eif otherwise
         """

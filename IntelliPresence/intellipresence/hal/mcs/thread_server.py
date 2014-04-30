@@ -1,5 +1,5 @@
 import socket
-from hal.mcs.camera import Camera
+from intellipresence.hal.mcs.camera import Camera
 import threading
 
 class NetworkThread(threading.Thread):
@@ -9,6 +9,7 @@ class NetworkThread(threading.Thread):
 
 	def __init__(self,ip_addr,port_num, cam):
 		super(NetworkThread, self).__init__()
+		self.daemon = True
 		self.ip_addr = ip_addr
 		self.port_num = port_num
 		self.cam = cam
@@ -31,7 +32,7 @@ class NetworkThread(threading.Thread):
 			if( buff == self.NO_FACE ):
 				self.detectionFrameCounter += 1
 				if( self.detectionFrameCounter >= self.FRAME_MEMORY_LIMIT):
-					self.cam.updateData(0,0,0,0)
+					self.cam.updateData(0,0,0,0, False)
 			else:
 				self.detectionFrameCounter = 0
 				data = buff.split(":")
@@ -39,8 +40,8 @@ class NetworkThread(threading.Thread):
 				y1 = data[1]
 				width = data[2]
 				height = data[3]
-				self.cam.updateData(x1, y1, width, height)
-			print( self.cam )
+				self.cam.updateData(x1, y1, width, height, True)
+			#print( self.cam )
 
 def main():
 	cam1 = Camera(0, 0, 0, 0, "RED2", "", "8091" )

@@ -4,6 +4,10 @@ This file contains the entry point and signal handlers for the program.
 import signal
 import sys
 import time
+from intellipresence.hal.mcs.camera import Camera
+from intellipresence.hal.mcs.thread_server import NetworkThread
+from intellipresence.armiture import Armiture
+from intellipresence.controller import Controller
 
 def main():
     """
@@ -25,6 +29,40 @@ def main():
     # Put the thread to sleep until the user hits ctrl-C.
     while( True ):
         time.sleep(1)
+
+def thread_test():
+        cam1 = Camera(0, 0, 0, 0, "RED2", "", 8091 )
+        cam2 = Camera(0, 0, 0, 0, "RED6", "", 8092 )
+        cam3 = Camera(0, 0, 0, 0, "RED3", "", 8093 )
+        cam4 = Camera(0, 0, 0, 0, "RED5", "", 8094 )
+        
+        arm1 = Armiture( 1, cam1, "", 8091, None, None, None)
+        arm2 = Armiture( 2, cam2, "", 8092, None, None, None)
+        arm3 = Armiture( 3, cam3, "", 8093, None, None, None)
+        arm4 = Armiture( 4, cam4, "", 8094, None, None, None)
+        
+        armList = {arm1, arm2, arm3, arm4}
+
+        controller = Controller( armList )
+        
+        while( True ):
+            arm1Det = arm1.isFaceDetected()
+            arm1Val = arm1.getMCSFaceArea()
+            arm2Det = arm2.isFaceDetected()
+            arm2Val = arm2.getMCSFaceArea()
+            arm3Det = arm3.isFaceDetected()
+            arm3Val = arm3.getMCSFaceArea() 
+            arm4Det = arm4.isFaceDetected()
+            arm4Val = arm4.getMCSFaceArea() 
+
+            print( "Armiture 1: {0} {1}, Armiture 2: {2} {3}, Armiture 3 {4} {5}, Armiture 4 {6} {7}".format(arm1Det, arm1Val, arm2Det, arm2Val, arm3Det, arm3Val, arm4Det, arm4Val ) )
+            camRanks = controller.camera_ranks()
+            #print( camRanks )
+            print( "ARM {0} BEST".format(camRanks[0][1] ) )
+            time.sleep(1)
+       
+
+
 
 def register_signal_handlers():
     """

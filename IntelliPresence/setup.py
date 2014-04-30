@@ -13,6 +13,7 @@ setup(
             "tantive_iv=intellipresence:main",
             "fip_run=intellipresence:main",
             "fip_test=tests:main",
+            "mcs_thread_test=intellipresence:thread_test",
         ],
     },
 )
