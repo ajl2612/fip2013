@@ -52,3 +52,31 @@ class Controller():
             pass
         return bestAngle
 
+    def start():
+        """
+        Connect to the ATEM and run MCS.
+        """
+        self.atem.connect()
+
+        while( True ):
+            arm1 = self.armitures[0]
+            arm2 = self.armitures[1]
+            arm3 = self.armitures[2]
+            arm4 = self.armitures[3]
+
+            arm1Det = arm1.isFaceDetected()
+            arm1Val = arm1.getMCSFaceArea()
+            arm2Det = arm2.isFaceDetected()
+            arm2Val = arm2.getMCSFaceArea()
+            arm3Det = arm3.isFaceDetected()
+            arm3Val = arm3.getMCSFaceArea() 
+            arm4Det = arm4.isFaceDetected()
+            arm4Val = arm4.getMCSFaceArea() 
+
+            print( "Armiture 1: {0} {1}, Armiture 2: {2} {3}, Armiture 3 {4} {5}, Armiture 4 {6} {7}".format(arm1Det, arm1Val, arm2Det, arm2Val, arm3Det, arm3Val, arm4Det, arm4Val ) )
+            camRanks = controller.camera_ranks()
+            #print( camRanks )
+            best_arm = camRanks[0][1] 
+            print( "ARM {0} BEST".format( best_arm ) )
+            self.amet.set_program_channel( best_arm )
+            time.sleep(2)
