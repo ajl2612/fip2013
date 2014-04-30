@@ -4,25 +4,48 @@ This file contains the entry point and signal handlers for the program.
 import signal
 import sys
 import time
+import logging
+import intellipresence.config
+import intellipresence.util
 from intellipresence.hal.mcs.camera import Camera
 from intellipresence.hal.mcs.thread_server import NetworkThread
 from intellipresence.armiture import Armiture
 from intellipresence.controller import Controller
+from intellipresence.hal.atem.atem import Atem
 
 def main():
     """
     The starting point for the program.
     """
+    # Configure the logger. This is done first because everything else uses
+    # the logger.
+    configure_logger()
+    logger = logging.getLogger( __name__ )
+    
+    # Validate some of the options that were added to the configuration.
+    validate_configuration()
+
     # Register handlers for various Unix signals. Signals are used to perform
     # Interprocess Communication in Unix-like operating systems; In this case,
     # we're handling IPC from a bash shell (ie. The user killing the program).
     register_signal_handlers()
 
-    # TODO: Perform armiture configuration here.
+    # Configure the armatures.
+    armatures = configure_armatures()
 
-    # TODO: Configure AMET here.
+    # Configure the ATEM subsystem.
+    atem = configure_atem()
 
-    # TODO: Configure the controller here.
+    '''
+    atem.connect()
+    for i in range( 1, 5 ):
+        logger.debug( "Switching to camera " + str( i ) )
+        atem.set_program_channel( i )
+        time.sleep( 1 )
+    '''
+
+    # Configure the controller.
+    controller = Controller( armatures, atem )
 
     # TODO: Kick things off here.
 
@@ -43,7 +66,7 @@ def thread_test():
         
         armList = {arm1, arm2, arm3, arm4}
 
-        controller = Controller( armList )
+        controller = Controller( armList, None )
         
         while( True ):
             arm1Det = arm1.isFaceDetected()
@@ -61,8 +84,62 @@ def thread_test():
             print( "ARM {0} BEST".format(camRanks[0][1] ) )
             time.sleep(1)
        
+def validate_configuration():
+    """
+    Validate the configuration in config.py. 
+    """
+    logger = logging.getLogger(__name__)
 
+    # Make sure that a valid network interface was provided for the ATEM.
+    interface_name = config.atem['adapter']
+    if not util.is_valid_network_interface( interface_name ):
+        logging.error( str( interface_name ) + " isn't a valid network interface." )
+        sys.exit( -1 )
 
+def configure_logger():
+    """
+    Configure the logger. By default we only care to have the output sent to
+    standard out for now. In the future we could have this log to disk
+    really easily.
+    """
+    root = logging.getLogger()
+    root.setLevel( logging.INFO )
+    formatter = logging.Formatter("[%(asctime)s][%(name)s][%(levelname)s]: %(message)s")
+
+    # Create and configure the standard out logging handler.
+    std_out_handler = logging.StreamHandler( sys.stdout )
+    std_out_handler.setLevel( logging.DEBUG )
+    std_out_handler.setFormatter( formatter )
+
+    # Add it to the root logger so all loggers can write to standard out.
+    root.addHandler( std_out_handler )
+
+def configure_atem():
+    """
+    Build an return an instance of the ATEM facade class.
+    The ATEM is an HDMI switch that is controlled over ethernet using a protocol
+    that was kinda-sorta reverse engineered. The ATEM facade class uses a thread
+    and a socket to perform I/O operations with the ATEM hardware.
+    """
+    logger = logging.getLogger( __name__ )
+
+    adapter = config.atem['adapter']
+    atem_ip = config.atem['atem_addr']
+    port = config.atem['port']
+    timeout = config.atem['atem_timeout']
+
+    socket_ip = util.get_interface_ip_addr( adapter )
+    return Atem( socket_ip, atem_ip, port, timeout )
+
+def configure_armatures():
+    """
+    An armature in the context of this system is an MCS Camera and Motor pair
+    on a tripod. The system consists of several of these armatures.
+    The MCS Camera and Motor both use a Thread with a Socket to communicate
+    with the physical Raspberry Pi hardware that the classes are modeled after. 
+    """
+    # TODO: Write me!
+    return []
 
 def register_signal_handlers():
     """
@@ -79,7 +156,8 @@ def handle_sigint( signum, stack ):
     this thread. Any kind of cleanup that's needed before shutting
     down should occur here.
     """
-    print( "\nReceived SIGINT - Shutting down!" )
+    logger = logging.getLogger( __name__ )
+    logger.info( "SIGINT received." )
 
     # TODO: Kill other threads, write out anything that needs to be persisted, etc.
 
@@ -94,5 +172,6 @@ def handle_siginfo( signum, stack ):
     return some information about the process of a long running task, or
     information about the program being run.
     """
-    print( "sup." )
+    logger = logging.getLogger( __name__ )
+    logger.info( "SIGINFO received." )
     pass

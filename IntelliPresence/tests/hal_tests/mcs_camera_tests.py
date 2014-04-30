@@ -1,8 +1,8 @@
-from intellipresence.hal.mcs_camera import MCSCamera
+from intellipresence.hal.mcs.camera import Camera
 
 def updateData_test():
     # Note, move this into a unit test later
-    cam = MCSCamera( 0,0,0,0,"Red2", 0, False)
+    cam = Camera( 0,0,0,0,"Red2", 0, False)
     cam.updateData( 5, 5, 10, 20, True )
     assert cam.getPoint1()[0] == 5
     assert cam.getPoint1()[1] == 5

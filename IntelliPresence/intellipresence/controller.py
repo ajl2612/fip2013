@@ -1,11 +1,13 @@
 class Controller():
-
-
-
-
-    def __init__( self, armitureList):
+    """
+    The controller is responsible for orchestrating the activities of the
+    armatures and the ATEM hardware. It acts as a mediator between the
+    different pieces of hardware. 
+    """
+    def __init__( self, armitureList, atem ):
         #list of Armiture objects
         self.armitures = armitureList
+	self.atem = atem
 
     def camera_ranks(self):
         """
@@ -49,5 +51,4 @@ class Controller():
         else:
             pass
         return bestAngle
-
 
