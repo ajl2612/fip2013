@@ -23,6 +23,10 @@ class Atem():
         self.atem_ip = atem_ip
         self.port = port
         self.timeout = timeout
+
+        logger = logging.getLogger( __name__ )
+        logger.info( "Creating socket at {}:{}".format( socket_ip, port ) )
+
         self.com = AtemCom( socket_ip, port ) 
 
     def connect( self ):
@@ -49,17 +53,33 @@ class Atem():
         
         # If we've made it this far, we can get rid of the timeout alarm.
         signal.alarm(0)
-    
+
+    def cut():
+        """
+        Send the cut command to the ATEM. This kills the connection?
+        """
+        command = "DCut"
+        payload = "\x00\x00\x00\x00"
+        self.com.sendCommand( command, payload )
+        self.com.waitForPacket()
+
     def set_preview_channel( self, channel ):
         """
         Change the preview channel to the indicated channel.
         channel - Integer number identifying the channel to switch to.
         """
-        pass
+        command = "CPvI"
+        payload = "\x00" + chr( channel ) + "\x00\x00"
+        self.com.sendCommand( command, payload )
+        self.com.waitForPacket()
 
     def set_program_channel( self, channel ):
         """
         Change the program channel to the indicated channel.
         channel - Integer number identifying the channel to switch to.
         """
-        pass
+        command = "CPgI"
+        payload = "\x00" + chr( channel ) + "\x00\x00"
+        self.com.sendCommand( command, payload )
+        self.com.waitForPacket()
+
