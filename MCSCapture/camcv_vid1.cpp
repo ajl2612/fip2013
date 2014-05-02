@@ -80,8 +80,8 @@ using namespace std;
 #define DEBUG if (DEBUG_MODE==1)
 
 //for networking
-#define SERVER_IP "129.21.58.247"
-#define SERVER_PORT 8091
+#define SERVER_IP "129.21.227.103"
+#define SERVER_PORT 8094
 
 CascadeClassifier face_cascade; 
 CvPoint Myeye_left;
@@ -242,9 +242,9 @@ static void default_status(RASPIVID_STATE *state)
    memset(state, 0, sizeof(RASPIVID_STATE));
 
    // Now set anything non-zero
-   state->timeout 			= 65000;     // capture time : here 65 s
-   state->width 			= 640;      // use a multiple of 320 (640, 1280)
-   state->height 			= 480;		// use a multiple of 240 (480, 960)
+   state->timeout 			= 10 * 60 * 1000;     // capture time : here 65 s
+   state->width 			= 320;      // use a multiple of 320 (640, 1280)
+   state->height 			= 240;		// use a multiple of 240 (480, 960)
    state->bitrate 			= 17000000; // This is a decent default bitrate for 1080p
    state->framerate 		= VIDEO_FRAME_RATE_NUM;
    state->immutableInput 	= 1;
